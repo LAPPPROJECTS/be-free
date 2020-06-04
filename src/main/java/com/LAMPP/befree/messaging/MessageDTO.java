@@ -2,8 +2,8 @@ package com.LAMPP.befree.messaging;
 
 public class MessageDTO {
 
-    public long senderId;
-    public long receiverId;
+    public long from;
+    public long to;
     public String body;
 
 }

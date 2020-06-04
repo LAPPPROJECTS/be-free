@@ -5,25 +5,25 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 @JsonAutoDetect
 public class Message {
 
-    private long senderId;
-    private long receiverId;
+    private long to;
+    private long from;
     private String body;
 
-    public Message(long senderId, long receiverId, String body) {
-        this.senderId = senderId;
-        this.receiverId = receiverId;
+    public Message(long to, long from, String body) {
+        this.to = to;
+        this.from = from;
         this.body = body;
     }
 
     public Message() {
     }
 
-    public long getSenderId() {
-        return senderId;
+    public long getTo() {
+        return to;
     }
 
-    public long getReceiverId() {
-        return receiverId;
+    public long getFrom() {
+        return from;
     }
 
     public String getBody() {

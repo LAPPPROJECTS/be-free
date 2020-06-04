@@ -8,14 +8,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class MessageService {
 
-    MessageRepository messageRepository;
-    MessageToDTOMapper messageToDTOMapper;
+    private MessageRepository messageRepository;
 
     @Autowired
-    public MessageService(MessageRepository messageRepository, MessageToDTOMapper messageToDTOMapper) {
+    public MessageService(MessageRepository messageRepository) {
         this.messageRepository = messageRepository;
-        this.messageToDTOMapper = messageToDTOMapper;
     }
 
+
+    public Message sendMessage(Message message){
+        return messageRepository.save(message);
+    }
 
 }
