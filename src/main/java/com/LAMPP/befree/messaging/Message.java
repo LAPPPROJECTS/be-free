@@ -1,8 +1,5 @@
 package com.LAMPP.befree.messaging;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-
-@JsonAutoDetect
 public class Message {
 
     private long to;

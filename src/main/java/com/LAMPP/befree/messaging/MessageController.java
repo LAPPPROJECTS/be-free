@@ -1,10 +1,11 @@
 package com.LAMPP.befree.messaging;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
@@ -18,10 +19,18 @@ public class MessageController {
         this.messageService = messageService;
     }
 
-    @PostMapping
-    public Message sendMessage(@RequestBody Message message){
 
-        return messageService.sendMessage(message);
+    @GetMapping
+    public ResponseEntity<List<MessageDTO>> getAllMessages(){
+        return new ResponseEntity<>(messageService.getAllMessages(), HttpStatus.OK);
+    }
+
+
+    @PostMapping
+    public ResponseEntity sendMessage(@RequestBody MessageDTO messageDto){
+
+        messageService.sendMessage(messageDto);
+        return new ResponseEntity(HttpStatus.OK);
 
     }
 
