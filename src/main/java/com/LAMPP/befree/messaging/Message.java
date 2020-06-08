@@ -1,6 +1,8 @@
 package com.LAMPP.befree.messaging;
 
-public class Message {
+import java.io.Serializable;
+
+public class Message implements Serializable {
 
     private long to;
     private long from;
