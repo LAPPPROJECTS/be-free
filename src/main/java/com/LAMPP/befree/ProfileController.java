@@ -1,8 +1,11 @@
 package com.LAMPP.befree;
 
+import com.LAMPP.befree.dto.ProfileDTO;
 import com.LAMPP.befree.model.Profile;
 import com.LAMPP.befree.service.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Provider;
@@ -16,24 +19,35 @@ public class ProfileController {
     ProfileService service;
 
     @Autowired
-public ProfileController(ProfileService service){
-        this.service=service;
+    public ProfileController(ProfileService service) {
+        this.service = service;
     }
 
-    public ProfileController(){}
+    public ProfileController() {
+    }
 
     @GetMapping
-    public List<Profile> getProfileList() {
-        return service.getAll();
+    public ResponseEntity<List<ProfileDTO>> getProfileList() {
+        return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
     }
 
-    @GetMapping ("/{idProfile}")
-    public Profile getById(@PathVariable long idProfile) {
-        return service.getById(idProfile);
+    @GetMapping("/{idProfile}")
+    public ResponseEntity<ProfileDTO> getById(@PathVariable long idProfile) {
+        ProfileDTO profile = service.getById(idProfile);
+        if (profile != null) {
+            return new ResponseEntity<>(profile, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @PostMapping
-    public void addProfile(@RequestBody Profile profile){
-        service.addProfile(profile);
+    public ResponseEntity addProfile(@RequestBody ProfileDTO profileDTO) {
+        if (profileDTO.name.length() > 20) {
+            return new ResponseEntity("To long name", HttpStatus.BAD_REQUEST);
+
+        }
+        service.addProfile(profileDTO);
+        return new ResponseEntity(HttpStatus.OK);
     }
+
 }
