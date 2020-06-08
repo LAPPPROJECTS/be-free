@@ -12,5 +12,6 @@ public class BeFreeApplication {
 	
 	// nowa linijka kodu
 	// dodana tutaj przeze mnie
+	// trzecia
 
 }
