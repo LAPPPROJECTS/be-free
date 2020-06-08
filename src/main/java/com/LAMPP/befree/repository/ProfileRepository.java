@@ -19,9 +19,9 @@ public class ProfileRepository {
     }
     public List<Profile>getAll() { return profileList;}
 
-    public Profile getById(@PathVariable long id) {
+    public Profile getById(@PathVariable long IdProfile) {
         return profileList.stream()
-                .filter(profile -> profile.getIdProfile()==id)
+                .filter(profile -> profile.getIdProfile()==IdProfile)
                 .findFirst()
                 .orElse(null);
     }
