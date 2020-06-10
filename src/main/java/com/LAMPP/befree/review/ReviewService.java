@@ -20,14 +20,17 @@ public class ReviewService {
     }
 
     public List<ReviewDTO> getAllReview() {
-        List<Review> allReview = (List<Review>) reviewRepository.findAll();
-        return allReview.stream().map(review -> reviewToDTOMapper.reviewDTO(review)).collect(Collectors.toList());
+        List<Review> allReview = (List<Review>) reviewRepository.findAll ();
+        return allReview.stream ().map (review -> reviewToDTOMapper
+                .reviewDTO (review))
+                .collect (Collectors.toList ());
     }
 
-    public void sendReview(ReviewDTO ReviewDTO){
+    public void sendReview(ReviewDTO ReviewDTO) {
 
-        Review review = new Review(ReviewDTO.content, ReviewDTO.rating, ReviewDTO.localDateTime);
-        reviewRepository.save(review);
+        Review review = new Review (ReviewDTO.content, ReviewDTO.rating,
+                ReviewDTO.localDateTime);
+        reviewRepository.save (review);
 
     }
 }

@@ -1,27 +1,24 @@
 package com.LAMPP.befree.review;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
 @RequestMapping("/review")
 public class ReviewController {
 
-    private final Object LocalDateTime;
+    private LocalDateTime localDateTime;
     private ReviewService reviewService;
     private List<Review> reviews;
 
     @Autowired
-    public ReviewController(@Qualifier("entityManagerFactory") Object localDateTime, ReviewService reviewService) {
-        LocalDateTime = localDateTime;
+    public ReviewController(ReviewService reviewService) {
         this.reviewService = reviewService;
-        this.reviews = new ArrayList<>();
-        reviews.add(new Review("AAA", 2, LocalDateTime));
-        reviews.add(new Review("BBB", 3, LocalDateTime));
+        reviews.add (new Review ("AAA", 2, localDateTime));
+        reviews.add (new Review ("BBB", 3, localDateTime));
     }
 
     @GetMapping
@@ -31,11 +28,11 @@ public class ReviewController {
 
     @PostMapping
     public boolean addReview(@RequestBody Review review) {
-        return reviews.add(review);
+        return reviews.add (review);
     }
 
     @DeleteMapping
     public void deleteReview(@RequestParam int index) {
-        reviews.remove(index);
+        reviews.remove (index);
     }
 }
