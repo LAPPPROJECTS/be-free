@@ -19,7 +19,7 @@ public class ReviewService {
         this.reviewToDTOMapper = reviewToDTOMapper;
     }
 
-    public List<Object> getAllReview() {
+    public List<ReviewDTO> getAllReview() {
         List<Review> allReview = (List<Review>) reviewRepository.findAll();
         return allReview.stream().map(review -> reviewToDTOMapper.reviewDTO(review)).collect(Collectors.toList());
     }

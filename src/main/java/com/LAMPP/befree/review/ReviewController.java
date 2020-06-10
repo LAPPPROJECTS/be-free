@@ -24,17 +24,17 @@ public class ReviewController {
         reviews.add(new Review("BBB", 3, LocalDateTime));
     }
 
-    @GetMapping("/review")
+    @GetMapping
     public List<Review> getReview() {
         return reviews;
     }
 
-    @PostMapping("/review")
+    @PostMapping
     public boolean addReview(@RequestBody Review review) {
         return reviews.add(review);
     }
 
-    @DeleteMapping("/review")
+    @DeleteMapping
     public void deleteReview(@RequestParam int index) {
         reviews.remove(index);
     }
