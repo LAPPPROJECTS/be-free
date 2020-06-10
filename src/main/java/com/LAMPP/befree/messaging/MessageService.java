@@ -15,7 +15,8 @@ public class MessageService {
     private MessageToDTOMapper messageToDTOMapper;
 
     @Autowired
-    public MessageService(MessageRepository messageRepository, MessageToDTOMapper messageToDTOMapper) {
+    public MessageService(MessageRepository messageRepository,
+                          MessageToDTOMapper messageToDTOMapper) {
         this.messageRepository = messageRepository;
         this.messageToDTOMapper = messageToDTOMapper;
     }
