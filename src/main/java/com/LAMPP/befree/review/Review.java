@@ -10,26 +10,27 @@ import java.time.*;
 public class Review implements Serializable {
 
     private String content;
-    private int rating;
+    private Enum rating;
     private LocalDateTime localDateTime;
     private LocalDate date;
     private LocalTime time;
 
-    public Review(String content, int rating, Object localDateTime) {
+    public Review() {
     }
 
-    public Review(String content, Enum enume, LocalDateTime localDateTime) {
+    public Review(String content, Enum rating, LocalDateTime localDateTime) {
         this.content = content;
+        this.rating = rating;
         this.localDateTime = localDateTime;
 
     }
 
-    private LocalDateTime with(LocalDate newDate, LocalTime newTime) {
-        if (date == newDate && time == newTime) {
-            return this.localDateTime;
-        }
-        return LocalDateTime.now ();
-    }
+    //private LocalDateTime with(LocalDate newDate, LocalTime newTime) {
+    //    if (date == newDate && time == newTime) {
+    //        return this.localDateTime;
+    //    }
+    //    return LocalDateTime.now ();
+    //}
 
     public String getContent() {
         return content;
@@ -39,7 +40,7 @@ public class Review implements Serializable {
         return localDateTime;
     }
 
-    public int getRating() {
+    public Enum getRating() {
         return rating;
     }
 

@@ -19,18 +19,18 @@ public class ReviewController {
     }
 
     @GetMapping
-    public List<Review> getReview() {
+    public List<ReviewDTO> getReview() {
         return reviewService.getAllReview ();
     }
 
     @PostMapping
-    public boolean addReview(@RequestBody Review review) {
-        return reviewService.addRepository (review);
+    public void addReviewToRepository(@RequestBody ReviewDTO reviewDTO) {
+        reviewService.addReviewToRepository (reviewDTO);
     }
 
     @DeleteMapping
-    public void deleteReview(@RequestParam int index) {
-        reviewService.remove (index);
+    public void remove(@RequestParam ReviewDTO reviewDTO) {
+        reviewService.remove (reviewDTO);
     }
 
 }
