@@ -26,12 +26,12 @@ public class ReviewService {
     }
 
     public void addReviewToRepository(ReviewDTO reviewDTO) {
-        Review review = new Review (reviewDTO.content, reviewDTO.rating, reviewDTO.localDateTime);
+        Review review = new Review (reviewDTO.idFrom, reviewDTO.idFor, reviewDTO.content, reviewDTO.rating, reviewDTO.localDateTime);
         reviewRepository.addReview (review);
     }
 
     public void remove(ReviewDTO reviewDTO) {
-        Review review = new Review (reviewDTO.content, reviewDTO.rating, reviewDTO.localDateTime);
+        Review review = new Review (reviewDTO.idFrom, reviewDTO.idFor, reviewDTO.content, reviewDTO.rating, reviewDTO.localDateTime);
         reviewRepository.deleteReview (review);
     }
 }
