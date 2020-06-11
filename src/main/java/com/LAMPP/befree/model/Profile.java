@@ -15,15 +15,21 @@ public class Profile implements Serializable {
     private String login;
     private String password;
     private long idProfile;
+    private long phoneNumber;
+    private int age;
+    private ProfileType profileType;
 
 
-    public Profile(String name, String surname, String email, String login, String password, long idProfile) {
+    public Profile(String name, String surname, String email, String login, String password, long idProfile, long phoneNumber, int age, ProfileType profileType) {
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.login = login;
         this.password = password;
         this.idProfile = idProfile;
+        this.phoneNumber = phoneNumber;
+        this.age = age;
+        this.profileType= profileType;
     }
 
     public Profile() {

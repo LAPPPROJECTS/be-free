@@ -17,6 +17,9 @@ public class ProfileToDTOMapper {
             profileDTO.login= profile.getLogin();
             profileDTO.password= profile.getPassword();
             profileDTO.idProfile= profile.getIdProfile();
+            profileDTO.age= profile.getAge();
+            profileDTO.phoneNumber= profile.getPhoneNumber();
+            profileDTO.profileType= profile.getProfileType();
             return profileDTO;
         }
     }

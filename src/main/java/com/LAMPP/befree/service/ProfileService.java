@@ -34,7 +34,8 @@ public class ProfileService {
         return profileToDTOMapper.getProfileDto(profile);
     }
     public void addProfile( ProfileDTO profileDTO){
-        Profile profile= new Profile(profileDTO.name, profileDTO.surname, profileDTO.email, profileDTO.login, profileDTO.password, profileDTO.idProfile );
+        Profile profile= new Profile(profileDTO.name, profileDTO.surname, profileDTO.email, profileDTO.login,
+                profileDTO.password, profileDTO.idProfile, profileDTO.phoneNumber, profileDTO.age, profileDTO.profileType );
         profileRepository.addProfile(profile);
     }
 
