@@ -9,6 +9,8 @@ import java.time.*;
 @JsonAutoDetect
 public class Review implements Serializable {
 
+    private int idFrom;
+    private int idFor;
     private String content;
     private Enum rating;
     private LocalDateTime localDateTime;
@@ -18,11 +20,21 @@ public class Review implements Serializable {
     public Review() {
     }
 
-    public Review(String content, Enum rating, LocalDateTime localDateTime) {
+    public Review(int idFrom, int idFor, String content, Enum rating, LocalDateTime localDateTime) {
+        this.idFrom = idFrom;
+        this.idFor = idFor;
         this.content = content;
         this.rating = rating;
         this.localDateTime = localDateTime;
 
+    }
+
+    public int getIdFrom() {
+        return idFrom;
+    }
+
+    public int getIdFor() {
+        return idFor;
     }
 
     public String getContent() {

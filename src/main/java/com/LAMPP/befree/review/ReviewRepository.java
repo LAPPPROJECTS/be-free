@@ -17,11 +17,11 @@ public class ReviewRepository {
     @Autowired
     public ReviewRepository() {
         LocalDateTime localDateTime = LocalDateTime.now ();
-        reviews.add (new Review ("AAA", Rating.IS_VERY_BAD, localDateTime));
-        reviews.add (new Review ("CCC", Rating.IS_BAD, localDateTime));
-        reviews.add (new Review ("DDD", Rating.IS_OK, localDateTime));
-        reviews.add (new Review ("EEE", Rating.IS_GOOD, localDateTime));
-        reviews.add (new Review ("BBB", Rating.IS_EXCELLENT, localDateTime));
+        reviews.add (new Review (1,2,"AAA", Rating.IS_VERY_BAD, localDateTime));
+        reviews.add (new Review (2,3,"CCC", Rating.IS_BAD, localDateTime));
+        reviews.add (new Review (3,4,"DDD", Rating.IS_OK, localDateTime));
+        reviews.add (new Review (4,5,"EEE", Rating.IS_GOOD, localDateTime));
+        reviews.add (new Review (5,6,"BBB", Rating.IS_EXCELLENT, localDateTime));
     }
 
     public List<Review> getAll() {
