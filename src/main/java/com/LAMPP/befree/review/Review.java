@@ -18,9 +18,8 @@ public class Review implements Serializable {
     public Review(String content, int rating, Object localDateTime) {
     }
 
-    public Review(String content, int rating, LocalDateTime localDateTime) {
+    public Review(String content, Enum enume, LocalDateTime localDateTime) {
         this.content = content;
-        this.rating = rating;
         this.localDateTime = localDateTime;
 
     }

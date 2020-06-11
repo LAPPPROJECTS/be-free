@@ -5,32 +5,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @NoArgsConstructor
 @Service
 public class ReviewService {
-    private ReviewRepository reviewRepository;
-    private ReviewToDTOMapper reviewToDTOMapper;
+    ReviewRepository reviewRepository;
+
 
     @Autowired
-    public ReviewService(ReviewRepository reviewRepository, ReviewToDTOMapper reviewToDTOMapper) {
+    public ReviewService(ReviewRepository reviewRepository) {
         this.reviewRepository = reviewRepository;
-        this.reviewToDTOMapper = reviewToDTOMapper;
     }
 
-    public List<ReviewDTO> getAllReview() {
-        List<Review> allReview = (List<Review>) reviewRepository.findAll ();
-        return allReview.stream ().map (review -> reviewToDTOMapper
-                .reviewDTO (review))
-                .collect (Collectors.toList ());
+    public List<Review> getAllReview(){
+        return reviewRepository.getAll ();
     }
 
-    public void sendReview(ReviewDTO ReviewDTO) {
+    public boolean addRepository(Review review) {
+        reviewRepository.addReview (review);
+        return false;
+    }
 
-        Review review = new Review (ReviewDTO.content, ReviewDTO.rating,
-                ReviewDTO.localDateTime);
-        reviewRepository.save (review);
-
+    public void remove(int index) {
+        reviewRepository.deleteReview(index);
     }
 }
