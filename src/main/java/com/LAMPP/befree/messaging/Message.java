@@ -1,6 +1,8 @@
 package com.LAMPP.befree.messaging;
 
+
 import java.io.Serializable;
+
 
 public class Message implements Serializable {
 
@@ -12,9 +14,6 @@ public class Message implements Serializable {
         this.to = to;
         this.from = from;
         this.body = body;
-    }
-
-    public Message() {
     }
 
     public long getTo() {

@@ -11,24 +11,24 @@ import java.util.stream.Collectors;
 @Service
 public class MessageService {
 
-    private MessageRepository messageRepository;
+    private MessageRepositoryAccess messageRepositoryAccess;
     private MessageToDTOMapper messageToDTOMapper;
 
     @Autowired
-    public MessageService(MessageRepository messageRepository, MessageToDTOMapper messageToDTOMapper) {
-        this.messageRepository = messageRepository;
+    public MessageService(MessageRepositoryAccess messageRepositoryAccess, MessageToDTOMapper messageToDTOMapper) {
+        this.messageRepositoryAccess = messageRepositoryAccess;
         this.messageToDTOMapper = messageToDTOMapper;
     }
 
     public List<MessageDTO> getAllMessages() {
-        List<Message> allMessages = (List<Message>) messageRepository.findAll();
+        List<Message> allMessages = messageRepositoryAccess.findAll();
         return allMessages.stream().map(message -> messageToDTOMapper.messageDTO(message)).collect(Collectors.toList());
     }
 
     public void sendMessage(MessageDTO messageDTO){
 
         Message message = new Message(messageDTO.to, messageDTO.from, messageDTO.body);
-        messageRepository.save(message);
+        messageRepositoryAccess.save(message);
 
     }
 
