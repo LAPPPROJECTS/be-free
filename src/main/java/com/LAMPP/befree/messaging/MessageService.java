@@ -1,34 +1,37 @@
 package com.LAMPP.befree.messaging;
 
-import lombok.NoArgsConstructor;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@NoArgsConstructor
+
 @Service
 public class MessageService {
 
-    private MessageRepositoryAccess messageRepositoryAccess;
+    private MessageRepository messageRepository;
     private MessageToDTOMapper messageToDTOMapper;
 
     @Autowired
-    public MessageService(MessageRepositoryAccess messageRepositoryAccess, MessageToDTOMapper messageToDTOMapper) {
-        this.messageRepositoryAccess = messageRepositoryAccess;
+    public MessageService(MessageRepository messageRepository, MessageToDTOMapper messageToDTOMapper) {
+        this.messageRepository = messageRepository;
         this.messageToDTOMapper = messageToDTOMapper;
     }
 
+    public MessageService() {
+    }
+
     public List<MessageDTO> getAllMessages() {
-        List<Message> allMessages = messageRepositoryAccess.findAll();
+        List<Message> allMessages = messageRepository.findAll();
         return allMessages.stream().map(message -> messageToDTOMapper.messageDTO(message)).collect(Collectors.toList());
     }
 
     public void sendMessage(MessageDTO messageDTO){
 
         Message message = new Message(messageDTO.id, messageDTO.to, messageDTO.from, messageDTO.body);
-        messageRepositoryAccess.save(message);
+        messageRepository.save(message);
 
     }
 
