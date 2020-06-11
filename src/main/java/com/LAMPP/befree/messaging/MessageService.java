@@ -27,7 +27,7 @@ public class MessageService {
 
     public void sendMessage(MessageDTO messageDTO){
 
-        Message message = new Message(messageDTO.to, messageDTO.from, messageDTO.body);
+        Message message = new Message(messageDTO.id, messageDTO.to, messageDTO.from, messageDTO.body);
         messageRepositoryAccess.save(message);
 
     }

@@ -10,6 +10,7 @@ public class MessageToDTOMapper {
             return null;
         } else {
             MessageDTO messageDTO = new MessageDTO();
+            messageDTO.id = message.getId();
             messageDTO.from = message.getFrom();
             messageDTO.to = message.getTo();
             messageDTO.body = message.getBody();
