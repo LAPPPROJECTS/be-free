@@ -28,11 +28,11 @@ public class MessageService {
         return allMessages.stream().map(message -> messageToDTOMapper.messageDTO(message)).collect(Collectors.toList());
     }
 
-    public void sendMessage(MessageDTO messageDTO){
+    public Message sendMessage(MessageDTO messageDTO){
 
         Message message = new Message(messageDTO.id, messageDTO.to, messageDTO.from, messageDTO.body);
         messageRepository.save(message);
-
+        return message;
     }
 
 }

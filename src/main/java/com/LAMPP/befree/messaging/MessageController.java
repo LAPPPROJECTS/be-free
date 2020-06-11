@@ -27,10 +27,10 @@ public class MessageController {
 
 
     @PostMapping
-    public ResponseEntity sendMessage(@RequestBody MessageDTO messageDto){
+    public ResponseEntity<MessageDTO> sendMessage(@RequestBody MessageDTO messageDto){
 
         messageService.sendMessage(messageDto);
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity<>(messageDto, HttpStatus.OK);
 
     }
 
