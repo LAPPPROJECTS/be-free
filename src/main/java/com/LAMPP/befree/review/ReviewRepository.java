@@ -21,6 +21,9 @@ public class ReviewRepository {
     public ReviewRepository(ReviewService reviewService) {
         this.reviewService = reviewService;
         reviews.add (new Review ("AAA", Rating.IS_VERY_BAD, localDateTime));
+        reviews.add (new Review ("CCC", Rating.IS_BAD, localDateTime));
+        reviews.add (new Review ("DDD", Rating.IS_OK, localDateTime));
+        reviews.add (new Review ("EEE", Rating.IS_GOOD, localDateTime));
         reviews.add (new Review ("BBB", Rating.IS_EXCELLENT, localDateTime));
     }
 
