@@ -37,4 +37,6 @@ public class Ad implements Serializable {
     }
 
 
+    public void getName() {       //dodana pusta metoda getName - w przeciwnym razie pokazuje blad w AdToDTOMapper w linijce 15
+    }
 }

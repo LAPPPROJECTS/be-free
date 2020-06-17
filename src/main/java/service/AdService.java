@@ -25,11 +25,12 @@ public class AdService {
 
     public List<AdDTO> getAll() {
         List<Ad> ads = adRepository.getAll();
+        Ad ad = new Ad();
         return ads.stream().map(cart -> adToDTOMapper.getAdDto(ad)).collect(Collectors.toList());
     }
 
     public AdDTO getById(int id) {
-        Ad ad = AdRepository.getById(id);  //tu zawolalo o "static" i zmienilem na static (inaczej pokazuwalo blad
+        Ad ad = AdRepository.getById(id);  //tu zawolalo o "static" i zmienilem na static w przeciwnym razie pokazywalo blad
         return adToDTOMapper.getAdDto(ad);
     }
 
@@ -38,4 +39,4 @@ public class AdService {
         adRepository.addAd(ad);
     }
 }
-}
+
