@@ -10,13 +10,14 @@ public class ProfileToDTOMapper {
         if (profile == null){
             return null;
         }else {
+
             ProfileDTO profileDTO = new ProfileDTO();
-            profileDTO.name= "DTO "+ profile.getName();
+            profileDTO.idProfile= profile.getIdProfile();
+            profileDTO.name= profile.getName();
             profileDTO.surname= profile.getSurname();
             profileDTO.email= profile.getEmail() ;
             profileDTO.login= profile.getLogin();
             profileDTO.password= profile.getPassword();
-            profileDTO.idProfile= profile.getIdProfile();
             profileDTO.age= profile.getAge();
             profileDTO.phoneNumber= profile.getPhoneNumber();
             profileDTO.profileType= profile.getProfileType();

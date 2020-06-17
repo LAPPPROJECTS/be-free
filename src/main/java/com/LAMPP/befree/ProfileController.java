@@ -1,16 +1,14 @@
 package com.LAMPP.befree;
 
 import com.LAMPP.befree.dto.ProfileDTO;
-import com.LAMPP.befree.model.Profile;
 import com.LAMPP.befree.service.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.Provider;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -34,7 +32,7 @@ public class ProfileController {
     }
 
     @GetMapping("/{idProfile}")
-    public ResponseEntity<ProfileDTO> getById(@PathVariable long idProfile) {
+    public ResponseEntity<ProfileDTO> getById(@PathVariable UUID idProfile) {
         ProfileDTO profile = service.getById(idProfile);
         if (profile != null) {
             return new ResponseEntity<>(profile, HttpStatus.OK);
