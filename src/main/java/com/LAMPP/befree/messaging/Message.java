@@ -44,7 +44,7 @@ public class Message implements Serializable {
         return body;
     }
 
-    public void setId(UUID id) {
+/*    public void setId(UUID id) {
         this.id = id;
     }
 
@@ -58,7 +58,7 @@ public class Message implements Serializable {
 
     public void setBody(String body) {
         this.body = body;
-    }
+    }*/
 }
 
 
