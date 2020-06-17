@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -32,8 +31,17 @@ public class ProfileController {
     }
 
     @GetMapping("/{idProfile}")
-    public ResponseEntity<ProfileDTO> getById(@PathVariable UUID idProfile) {
+    public ResponseEntity<ProfileDTO> getById(@PathVariable long idProfile) {
         ProfileDTO profile = service.getById(idProfile);
+        if (profile != null) {
+            return new ResponseEntity<>(profile, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping({"/log/{login}"})  // don't work
+    public ResponseEntity<ProfileDTO> getByLogin(@PathVariable String login) {
+        ProfileDTO profile = service.getByLogin(login);
         if (profile != null) {
             return new ResponseEntity<>(profile, HttpStatus.OK);
         }
@@ -43,17 +51,19 @@ public class ProfileController {
     @PostMapping
     public ResponseEntity addProfile(@RequestBody ProfileDTO profileDTO) {
         if (profileDTO.name.length() > 20) {
-            return new ResponseEntity("To long name", HttpStatus.BAD_REQUEST);}
+            return new ResponseEntity("To long name", HttpStatus.BAD_REQUEST);
+        }
         if (profileDTO.surname.length() > 20) {
-            return new ResponseEntity("To long name", HttpStatus.BAD_REQUEST);}
+            return new ResponseEntity("To long name", HttpStatus.BAD_REQUEST);
+        }
 
-        Pattern patternEmail= Pattern.compile("^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$");
-        Matcher matcherEmail= patternEmail.matcher(profileDTO.email);
-        if(matcherEmail.matches()== false){
+        Pattern patternEmail = Pattern.compile("^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$");
+        Matcher matcherEmail = patternEmail.matcher(profileDTO.email);
+        if (matcherEmail.matches() == false) {
             return new ResponseEntity("wrong email format", HttpStatus.BAD_REQUEST);
         }
-if (profileDTO.login.length()>20){
-    return new ResponseEntity("To long login", HttpStatus.BAD_REQUEST);
+        if (profileDTO.login.length() > 20) {
+            return new ResponseEntity("To long login", HttpStatus.BAD_REQUEST);
         }
 
 

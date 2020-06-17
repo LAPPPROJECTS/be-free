@@ -2,10 +2,11 @@ package com.LAMPP.befree.dto;
 
 import com.LAMPP.befree.model.ProfileType;
 
-import java.util.UUID;
+import java.util.Date;
 
 public class ProfileDTO {
-    public UUID idProfile;
+    public Date dateCreateProfile;
+    public long idProfile;
     public String name;
     public  String surname;
     public String email ;
