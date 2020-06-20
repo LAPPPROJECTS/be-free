@@ -14,9 +14,9 @@ public class ProfileRepository implements InterfaceRepositoryProfile {
 
 
     public ProfileRepository() {
-        profileList.add(new Profile( 1000001, "Janusz", "Kowalski", "kowalski@gmail.com", "kowal", "password",  12555446, 33, ProfileType.USER));
-        profileList.add(new Profile(1000002,"Janusz2", "Kowalski2", "2kowalski@gmail.com", "kowal2", "password2",  5485494, 55, ProfileType.USER));
-        profileList.add(new Profile(10000013,"Janusz3", "Kowalski3", "3kowalski@gmail.com", "kowal3", "password3",  55448, 66, ProfileType.USER));
+        profileList.add(new Profile(1000001, "Janusz", "Kowalski", "kowalski@gmail.com", "kowal", "password", 12555446, 33, ProfileType.USER));
+        profileList.add(new Profile(1000002, "Janusz2", "Kowalski2", "2kowalski@gmail.com", "kowal2", "password2", 5485494, 55, ProfileType.USER));
+        profileList.add(new Profile(10000013, "Janusz3", "Kowalski3", "3kowalski@gmail.com", "kowal3", "password3", 55448, 66, ProfileType.USER));
     }
 
 
@@ -37,7 +37,7 @@ public class ProfileRepository implements InterfaceRepositoryProfile {
     @Override
     public Profile getByLogin(String login) {
         return profileList.stream()
-                .filter(profile -> profile.getLogin()==login)
+                .filter(profile -> profile.getLogin().equals(login))
                 .findFirst()
                 .orElse(null);
     }

@@ -19,12 +19,12 @@ public class Profile implements Serializable {
     private String password;
     private long phoneNumber;
     private int age;
-    private ProfileType profileType;
+    private ProfileType profileType = ProfileType.USER;
 
 
     public Profile(long idProfile, String name, String surname,
-                   String email,  String login,  String password,
-                  long phoneNumber, int age, ProfileType profileType) {
+                   String email, String login, String password,
+                   long phoneNumber, int age, ProfileType USER) {
         this.idProfile = idProfile;
         this.name = name;
         this.surname = surname;
@@ -33,7 +33,7 @@ public class Profile implements Serializable {
         this.password = password;
         this.phoneNumber = phoneNumber;
         this.age = age;
-        this.profileType = profileType;
+        this.profileType = ProfileType.USER;
     }
 
 }

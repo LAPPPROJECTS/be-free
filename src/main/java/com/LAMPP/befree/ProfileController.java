@@ -25,12 +25,15 @@ public class ProfileController {
     public ProfileController() {
     }
 
-    @GetMapping
+
+   @GetMapping
     public ResponseEntity<List<ProfileDTO>> getProfileList() {
         return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
     }
 
-    @GetMapping("/{idProfile}")
+
+   // @GetMapping("/{idProfile}")
+   @RequestMapping(value="/{idProfile}", method = RequestMethod.GET)
     public ResponseEntity<ProfileDTO> getById(@PathVariable long idProfile) {
         ProfileDTO profile = service.getById(idProfile);
         if (profile != null) {
@@ -39,8 +42,8 @@ public class ProfileController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping({"/log/{login}"})  // don't work
-    public ResponseEntity<ProfileDTO> getByLogin(@PathVariable String login) {
+   @GetMapping({"/log/{login}"})  // don't work
+      public ResponseEntity<ProfileDTO> getByLogin(@PathVariable String login) {
         ProfileDTO profile = service.getByLogin(login);
         if (profile != null) {
             return new ResponseEntity<>(profile, HttpStatus.OK);

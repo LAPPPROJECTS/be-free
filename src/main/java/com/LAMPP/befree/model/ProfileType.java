@@ -8,6 +8,6 @@ public enum ProfileType {
     private final String description;
 
     ProfileType(String description) {
-    this.description= description;
+        this.description = description;
     }
 }
