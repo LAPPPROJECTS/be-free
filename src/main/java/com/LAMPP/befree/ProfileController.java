@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -34,7 +35,7 @@ public class ProfileController {
 
    // @GetMapping("/{idProfile}")
    @RequestMapping(value="/{idProfile}", method = RequestMethod.GET)
-    public ResponseEntity<ProfileDTO> getById(@PathVariable long idProfile) {
+    public ResponseEntity<ProfileDTO> getById(@PathVariable UUID idProfile) {
         ProfileDTO profile = service.getById(idProfile);
         if (profile != null) {
             return new ResponseEntity<>(profile, HttpStatus.OK);
@@ -42,7 +43,7 @@ public class ProfileController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-   @GetMapping({"/log/{login}"})  // don't work
+   @GetMapping({"/log/{login}"})
       public ResponseEntity<ProfileDTO> getByLogin(@PathVariable String login) {
         ProfileDTO profile = service.getByLogin(login);
         if (profile != null) {

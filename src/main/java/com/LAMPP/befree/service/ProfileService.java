@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -26,7 +27,7 @@ public class ProfileService {
         return profiles.stream().map(profile -> profileToDTOMapper.getProfileDto(profile)).collect(Collectors.toList());
     }
 
-    public ProfileDTO getById(long idProfile){
+    public ProfileDTO getById(UUID idProfile){
         Profile profile = profileRepository.getById(idProfile);
         return profileToDTOMapper.getProfileDto(profile);
     }
