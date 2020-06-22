@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -26,16 +25,14 @@ public class ProfileController {
     public ProfileController() {
     }
 
-
-   @GetMapping
+    @GetMapping
     public ResponseEntity<List<ProfileDTO>> getProfileList() {
         return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
     }
 
 
-   // @GetMapping("/{idProfile}")
-   @RequestMapping(value="/{idProfile}", method = RequestMethod.GET)
-    public ResponseEntity<ProfileDTO> getById(@PathVariable UUID idProfile) {
+    @RequestMapping(value = "/idProfile", method = RequestMethod.GET)
+    public ResponseEntity<ProfileDTO> getById(@PathVariable String idProfile) {
         ProfileDTO profile = service.getById(idProfile);
         if (profile != null) {
             return new ResponseEntity<>(profile, HttpStatus.OK);
@@ -43,8 +40,8 @@ public class ProfileController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-   @GetMapping({"/log/{login}"})
-      public ResponseEntity<ProfileDTO> getByLogin(@PathVariable String login) {
+    @RequestMapping(value = "/{login}", method = RequestMethod.GET)
+    public ResponseEntity<ProfileDTO> getByLogin(@PathVariable String login) {
         ProfileDTO profile = service.getByLogin(login);
         if (profile != null) {
             return new ResponseEntity<>(profile, HttpStatus.OK);
@@ -69,7 +66,6 @@ public class ProfileController {
         if (profileDTO.login.length() > 20) {
             return new ResponseEntity("To long login", HttpStatus.BAD_REQUEST);
         }
-
 
         service.addProfile(profileDTO);
         return new ResponseEntity(HttpStatus.OK);

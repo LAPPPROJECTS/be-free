@@ -2,7 +2,6 @@ package com.LAMPP.befree.model;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
 
 import java.io.Serializable;
 import java.util.UUID;
@@ -12,8 +11,7 @@ import java.util.UUID;
 
 public class Profile implements Serializable {
 
-@Id
-    public UUID idProfile;
+    public String idProfile;
     private String name;
     private String surname;
     private String email;
@@ -24,10 +22,10 @@ public class Profile implements Serializable {
     private ProfileType profileType = ProfileType.USER;
 
 
-    public Profile(UUID idProfile, String name, String surname,
+    public Profile(String idProfile, String name, String surname,
                    String email, String login, String password,
                    long phoneNumber, int age, ProfileType USER) {
-        this.idProfile =idProfile;
+        this.idProfile =UUID.randomUUID().toString();
         this.name = name;
         this.surname = surname;
         this.email = email;

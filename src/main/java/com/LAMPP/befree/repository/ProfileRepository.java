@@ -1,11 +1,11 @@
 package com.LAMPP.befree.repository;
 
 import com.LAMPP.befree.model.Profile;
+import com.LAMPP.befree.model.ProfileType;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Repository
 public class ProfileRepository implements InterfaceRepositoryProfile {
@@ -14,9 +14,9 @@ public class ProfileRepository implements InterfaceRepositoryProfile {
 
 
     public ProfileRepository() {
-        //profileList.add(new Profile(1000001, "Janusz", "Kowalski", "kowalski@gmail.com", "kowal", "password", 12555446, 33, ProfileType.USER));
-       // profileList.add(new Profile(1000002, "Janusz2", "Kowalski2", "2kowalski@gmail.com", "kowal2", "password2", 5485494, 55, ProfileType.USER));
-        //profileList.add(new Profile(10000013, "Janusz3", "Kowalski3", "3kowalski@gmail.com", "kowal3", "password3", 55448, 66, ProfileType.USER));
+        profileList.add(new Profile("903424c4-b4b6-11ea-b3de-0242ac130004", "Janusz", "Kowalski", "kowalski@gmail.com", "kowal", "password", 12555446, 33, ProfileType.USER));
+        profileList.add(new Profile("6d597fa6-b4bd-11ea-b3de-0242ac130004", "Janusz2", "Kowalski2", "2kowalski@gmail.com", "kowal2", "password2", 5485494, 55, ProfileType.USER));
+        profileList.add(new Profile("6d598320-b4bd-11ea-b3de-0242ac130004", "Janusz3", "Kowalski3", "3kowalski@gmail.com", "kowal3", "password3", 55448, 66, ProfileType.USER));
     }
 
 
@@ -26,9 +26,9 @@ public class ProfileRepository implements InterfaceRepositoryProfile {
     }
 
     @Override
-    public Profile getById(UUID idProfile) {
+    public Profile getById(String idProfile) {
         return profileList.stream()
-                .filter(profile -> profile.getIdProfile().equals(idProfile) )
+                .filter(profile -> profile.getIdProfile().equals(idProfile))
                 .findFirst()
                 .orElse(null);
 
