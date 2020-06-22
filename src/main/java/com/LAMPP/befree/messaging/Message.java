@@ -14,14 +14,14 @@ public class Message implements Serializable {
     @Id
     private UUID id;
 
-    private long to;
-    private long from;
+    private long toUser;
+    private long fromUser;
     private String body;
 
-    public Message(UUID id, long to, long from, String body) {
+    public Message(UUID id, long toUser, long fromUser, String body) {
         this.id = id;
-        this.to = to;
-        this.from = from;
+        this.toUser = toUser;
+        this.fromUser = fromUser;
         this.body = body;
     }
 
@@ -32,12 +32,12 @@ public class Message implements Serializable {
         return id;
     }
 
-    public long getTo() {
-        return to;
+    public long getToUser() {
+        return toUser;
     }
 
-    public long getFrom() {
-        return from;
+    public long getFromUser() {
+        return fromUser;
     }
 
     public String getBody() {
@@ -48,12 +48,12 @@ public class Message implements Serializable {
         this.id = id;
     }
 
-    public void setTo(long to) {
-        this.to = to;
+    public void setTo(long toUser) {
+        this.toUser = toUser;
     }
 
-    public void setFrom(long from) {
-        this.from = from;
+    public void setFrom(long fromUser) {
+        this.fromUser = fromUser;
     }
 
     public void setBody(String body) {
