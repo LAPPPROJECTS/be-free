@@ -1,0 +1,5 @@
+CREATE DATABASE IF NOT EXISTS befree;
+CREATE USER IF NOT EXISTS 'befree'@'%' IDENTIFIED BY 'befree4all';
+GRANT ALL PRIVILEGES ON befree.* TO 'befree'@'%';
+
+
