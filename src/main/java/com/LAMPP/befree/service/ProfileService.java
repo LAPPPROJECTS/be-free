@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -26,7 +27,7 @@ public class ProfileService {
         return profiles.stream().map(profile -> profileToDTOMapper.getProfileDto(profile)).collect(Collectors.toList());
     }
 
-    public ProfileDTO getById(String idProfile){
+    public ProfileDTO getById(UUID idProfile){
         Profile profile = profileRepository.getById(idProfile);
         return profileToDTOMapper.getProfileDto(profile);
     }
@@ -35,10 +36,10 @@ public class ProfileService {
         return profileToDTOMapper.getProfileDto(profile);
     }
 
-    public void addProfile( ProfileDTO profileDTO){
+    public int addProfile( ProfileDTO profileDTO){
         Profile profile= new Profile(profileDTO.idProfile, profileDTO.name, profileDTO.surname, profileDTO.email, profileDTO.login,
                 profileDTO.password, profileDTO.phoneNumber, profileDTO.age, profileDTO.profileType );
-        profileRepository.addProfile(profile);
+        return profileRepository.addProfile(profile);
     }
 
     }

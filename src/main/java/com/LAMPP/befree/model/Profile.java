@@ -1,17 +1,17 @@
 package com.LAMPP.befree.model;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import java.io.Serializable;
 import java.util.UUID;
 
-@JsonAutoDetect
+//@JsonAutoDetect
 @Data
 
 public class Profile implements Serializable {
 
-    public String idProfile;
+    private final UUID idProfile;
     private String name;
     private String surname;
     private String email;
@@ -19,13 +19,13 @@ public class Profile implements Serializable {
     private String password;
     private long phoneNumber;
     private int age;
-    private ProfileType profileType = ProfileType.USER;
+    private ProfileType profileType;
 
 
-    public Profile(String idProfile, String name, String surname,
-                   String email, String login, String password,
-                   long phoneNumber, int age, ProfileType USER) {
-        this.idProfile =UUID.randomUUID().toString();
+    public Profile(@JsonProperty("idProfile") UUID idProfile, String name, String surname,
+                   String email, @JsonProperty("login") String login, String password,
+                  long phoneNumber, int age, ProfileType profileType) {
+        this.idProfile =idProfile;
         this.name = name;
         this.surname = surname;
         this.email = email;
@@ -33,7 +33,7 @@ public class Profile implements Serializable {
         this.password = password;
         this.phoneNumber = phoneNumber;
         this.age = age;
-        this.profileType = ProfileType.USER;
+        this.profileType= profileType;
     }
 
 }

@@ -6,8 +6,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 
-import static com.LAMPP.befree.model.ProfileType.USER;
-
 @Service
 public class ProfileToDTOMapper {
     public ProfileDTO getProfileDto(Profile profile) {
@@ -17,7 +15,7 @@ public class ProfileToDTOMapper {
 
             ProfileDTO profileDTO = new ProfileDTO();
             profileDTO.dateCreateProfile = new Date();
-            profileDTO.idProfile = profile.getIdProfile();
+            profileDTO.idProfile =profile.getIdProfile();
             profileDTO.name = profile.getName();
             profileDTO.surname = profile.getSurname();
             profileDTO.email = profile.getEmail();
@@ -25,7 +23,7 @@ public class ProfileToDTOMapper {
             profileDTO.password = profile.getPassword();
             profileDTO.age = profile.getAge();
             profileDTO.phoneNumber = profile.getPhoneNumber();
-            profileDTO.profileType = USER;
+            profileDTO.profileType = profile.getProfileType();
             return profileDTO;
         }
     }

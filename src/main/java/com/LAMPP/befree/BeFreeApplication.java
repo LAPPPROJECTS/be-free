@@ -10,8 +10,5 @@ public class BeFreeApplication {
 		SpringApplication.run(BeFreeApplication.class, args);
 	}
 	
-	// nowa linijka kodu
-	// dodana tutaj przeze mnie
-	// trzecia
-//Komentarz
+
 }
