@@ -6,14 +6,4 @@ body varchar(4000)
 );
 
 
-INSERT INTO messages(id, to_user, from_user, body)
-VALUES(UUID_TO_BIN(UUID()), 101, 202, 'Hey. How are you?'),
-      (UUID_TO_BIN(UUID()), 202, 101, 'Great. Project almost done')  ;
 
-
-SELECT
-BIN_TO_UUID(id) id,
-to_user,
-from_user,
-body
-FROM messages;
