@@ -9,5 +9,9 @@ public class BeFreeApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(BeFreeApplication.class, args);
 	}
-
+	
+	// nowa linijka kodu
+	// dodana tutaj przeze mnie
+	// trzecia
+//Komentarz
 }
