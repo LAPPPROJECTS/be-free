@@ -12,7 +12,7 @@ public class AdToDTOMapper {
         } else {
             AdDTO adDTO = new AdDTO();
             adDTO.id = ad.getId();
-            adDTO.name = String.format("Tytul ogloszenia: %s", ad.getName());
+            adDTO.title = String.format("Tytul ogloszenia: %s", ad.getTitle());
             return adDTO;
         }
     }

@@ -1,6 +1,6 @@
 package DTO;
 
 public class AdDTO {
-    public String name;
+    public String title;
     public int id;
 }

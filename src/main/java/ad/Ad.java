@@ -10,11 +10,11 @@ public class Ad implements Serializable {
     private String title;
     private int id;
 
+
     public Ad(String title, int id) {
         this.title = title;
         this.id = id;
     }
-    //przed get i set wstawiona pusta metoda Ad (poniżej)
 
     public Ad() {
 
@@ -37,6 +37,6 @@ public class Ad implements Serializable {
     }
 
 
-    public void getName() {       //dodana pusta metoda getName - w przeciwnym razie pokazuje blad w AdToDTOMapper w linijce 15
+    public void get() {
     }
 }

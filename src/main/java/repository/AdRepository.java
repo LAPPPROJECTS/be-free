@@ -16,18 +16,18 @@ public class AdRepository {
         adList.add(new Ad("Inna nazwa ogloszenia", 1333));
     }
 
-    public static void setAdList(Collection<Object> adList) {
-        AdRepository.adList = adList;
+    public void setAdList(Collection<Object> adList) {
+        // adRepository.adList = adList;
     }
 
     public List<Ad> getAdList() {              //tutaj podpowiada getAdList a poprzednio bylo getAll
         return adList;
     }
-    public static Ad getById(int id) {
+    public Ad getById(int id) {
         return (Ad) adList.stream()
                     .filter(ad -> ad.getId() == id)
                     .findFirst()
-                    .orElse(null)
+                    .orElse(null);
     }
     public void addAd(Ad ad) {
         adList.add(ad);
@@ -37,7 +37,7 @@ public class AdRepository {
         this.adList = adList;
     }
 
-    public List<Ad> getAll() {     //tu wstawiona pusta metoda getAll inaczej blad w AdService w linijce 27
+    public List<Ad> getAll() {
         return null;
     }
 }

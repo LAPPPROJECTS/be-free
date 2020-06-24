@@ -2,7 +2,6 @@ package service;
 
 import DTO.AdDTO;
 import ad.Ad;
-import com.LAMPP.*;
 import mapper.AdToDTOMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,13 +28,13 @@ public class AdService {
         return ads.stream().map(cart -> adToDTOMapper.getAdDto(ad)).collect(Collectors.toList());
     }
 
-    public AdDTO getById(int id) {
-        Ad ad = AdRepository.getById(id);  //tu zawolalo o "static" i zmienilem na static w przeciwnym razie pokazywalo blad
+    public AdDTO getId(int id) {
+        Ad ad = adRepository.getById(id);
         return adToDTOMapper.getAdDto(ad);
     }
 
     public void addAd(AdDTO adDTO) {
-        Ad ad = new Ad(adDTO.name, adDTO.id);
+        Ad ad = new Ad(adDTO.title, adDTO.id);
         adRepository.addAd(ad);
     }
 }
