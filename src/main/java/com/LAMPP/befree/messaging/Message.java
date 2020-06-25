@@ -44,21 +44,6 @@ public class Message implements Serializable {
         return body;
     }
 
-/*    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public void setTo(long toUser) {
-        this.toUser = toUser;
-    }
-
-    public void setFrom(long fromUser) {
-        this.fromUser = fromUser;
-    }
-
-    public void setBody(String body) {
-        this.body = body;
-    }*/
 }
 
 
