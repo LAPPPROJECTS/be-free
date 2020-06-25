@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 
@@ -28,9 +29,9 @@ public class MessageService {
         return allMessages.stream().map(message -> messageToDTOMapper.messageDTO(message)).collect(Collectors.toList());
     }
 
-    public Message sendMessage(MessageDTO messageDTO){
+    public Message sendMessage(MessageDTOWrite messageDTO){
 
-        Message message = new Message(messageDTO.id, messageDTO.to, messageDTO.from, messageDTO.body);
+        Message message = new Message(UUID.randomUUID(), messageDTO.fromUser, messageDTO.toUser, messageDTO.body);
         messageRepository.save(message);
         return message;
     }

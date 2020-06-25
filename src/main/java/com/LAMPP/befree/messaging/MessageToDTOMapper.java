@@ -11,11 +11,12 @@ public class MessageToDTOMapper {
         } else {
             MessageDTO messageDTO = new MessageDTO();
             messageDTO.id = message.getId();
-            messageDTO.from = message.getFromUser();
-            messageDTO.to = message.getToUser();
+            messageDTO.fromUser = message.getFromUser();
+            messageDTO.toUser = message.getToUser();
             messageDTO.body = message.getBody();
             return messageDTO;
         }
     }
+
 
 }
