@@ -1,17 +1,19 @@
 package com.LAMPP.befree.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import lombok.Getter;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.UUID;
 
-//@JsonAutoDetect
-@Data
+@JsonAutoDetect
+@Getter
 
 public class Profile implements Serializable {
 
-    private final UUID idProfile;
+    private Date dateCreateProfile;
+    private UUID idProfile;
     private String name;
     private String surname;
     private String email;
@@ -22,10 +24,12 @@ public class Profile implements Serializable {
     private ProfileType profileType;
 
 
-    public Profile(@JsonProperty("idProfile") UUID idProfile, String name, String surname,
-                   String email, @JsonProperty("login") String login, String password,
-                  long phoneNumber, int age, ProfileType profileType) {
-        this.idProfile =idProfile;
+    public Profile(String name, String surname,
+                   String email, String login, String password,
+                  long phoneNumber, int age) {
+
+        this.dateCreateProfile=  new Date();
+        this.idProfile = UUID.randomUUID();
         this.name = name;
         this.surname = surname;
         this.email = email;
@@ -33,7 +37,22 @@ public class Profile implements Serializable {
         this.password = password;
         this.phoneNumber = phoneNumber;
         this.age = age;
-        this.profileType= profileType;
+        this.profileType= ProfileType.USER;
+    }
+
+    public Profile(String name, String surname,
+                   String email, String login,
+                   long phoneNumber, int age) {
+
+        this.dateCreateProfile=  new Date();
+        this.idProfile = UUID.randomUUID();
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.login = login;
+       this.phoneNumber = phoneNumber;
+        this.age = age;
+        this.profileType= ProfileType.USER;
     }
 
 }

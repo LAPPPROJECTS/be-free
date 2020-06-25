@@ -1,7 +1,7 @@
 package com.LAMPP.befree.service;
 
-import com.LAMPP.befree.dto.ProfileDTO;
-import com.LAMPP.befree.mapper.ProfileToDTOMapper;
+import com.LAMPP.befree.dto.GetProfileDTO;
+import com.LAMPP.befree.mapper.GetProfileToDTOMapper;
 import com.LAMPP.befree.model.Profile;
 import com.LAMPP.befree.repository.ProfileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,31 +15,32 @@ import java.util.stream.Collectors;
 public class ProfileService {
 
     ProfileRepository profileRepository;
-    ProfileToDTOMapper profileToDTOMapper;
+    GetProfileToDTOMapper getProfileToDTOMapper;
 
     @Autowired
-    public ProfileService(ProfileRepository profileRepository, ProfileToDTOMapper profileToDTOMapper){
+    public ProfileService(ProfileRepository profileRepository, GetProfileToDTOMapper getProfileToDTOMapper){
         this.profileRepository= profileRepository;
-        this.profileToDTOMapper= profileToDTOMapper;
+        this.getProfileToDTOMapper = getProfileToDTOMapper;
     }
-    public List<ProfileDTO>getAll(){
+    public List<GetProfileDTO>getAll(){
         List<Profile> profiles = profileRepository.getAll();
-        return profiles.stream().map(profile -> profileToDTOMapper.getProfileDto(profile)).collect(Collectors.toList());
+        return profiles.stream().map(profile -> getProfileToDTOMapper.getProfileDto(profile)).collect(Collectors.toList());
     }
 
-    public ProfileDTO getById(UUID idProfile){
+    public GetProfileDTO getById(UUID idProfile){
         Profile profile = profileRepository.getById(idProfile);
-        return profileToDTOMapper.getProfileDto(profile);
+        return getProfileToDTOMapper.getProfileDto(profile);
     }
-    public ProfileDTO getByLogin(String login){
+    public GetProfileDTO getByLogin(String login){
         Profile profile= profileRepository.getByLogin(login);
-        return profileToDTOMapper.getProfileDto(profile);
+        return getProfileToDTOMapper.getProfileDto(profile);
     }
 
-    public int addProfile( ProfileDTO profileDTO){
-        Profile profile= new Profile(profileDTO.idProfile, profileDTO.name, profileDTO.surname, profileDTO.email, profileDTO.login,
-                profileDTO.password, profileDTO.phoneNumber, profileDTO.age, profileDTO.profileType );
-        return profileRepository.addProfile(profile);
+    public void addProfile( GetProfileDTO getProfileDTO){
+        Profile profile= new Profile(getProfileDTO.name, getProfileDTO.surname, getProfileDTO.email, getProfileDTO.login,
+                getProfileDTO.phoneNumber, getProfileDTO.age);
+        profileRepository.addProfile(profile);
     }
 
-    }
+
+}

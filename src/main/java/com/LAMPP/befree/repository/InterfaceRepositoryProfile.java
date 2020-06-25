@@ -15,11 +15,7 @@ public interface InterfaceRepositoryProfile {
 
     public Profile getByLogin(String login);
 
-    public int addProfile(UUID idProfile, Profile profile);
+    public void addProfile(Profile profile);;
 
-    default int addProfile(Profile profile){
-        UUID idProfile=UUID.randomUUID();
-        return addProfile(idProfile, profile );
-    }
 
 }

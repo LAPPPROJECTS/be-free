@@ -1,6 +1,6 @@
 package com.LAMPP.befree;
 
-import com.LAMPP.befree.dto.ProfileDTO;
+import com.LAMPP.befree.dto.GetProfileDTO;
 import com.LAMPP.befree.service.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,14 +27,14 @@ public class ProfileController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ProfileDTO>> getProfileList() {
+    public ResponseEntity<List<GetProfileDTO>> getProfileList() {
         return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
     }
 
 
     @GetMapping(path = "/{idProfile}")
-    public ResponseEntity<ProfileDTO> getById(@PathVariable ("idProfile") UUID idProfile) {
-        ProfileDTO profile = service.getById(idProfile);
+    public ResponseEntity<GetProfileDTO> getById(@PathVariable ("idProfile") UUID idProfile) {
+        GetProfileDTO profile = service.getById(idProfile);
         if (profile != null) {
             return new ResponseEntity<>(profile, HttpStatus.OK);
         }
@@ -42,8 +42,8 @@ public class ProfileController {
     }
 
     @GetMapping(path = "/log/{login}")
-    public ResponseEntity<ProfileDTO> getByLogin(@PathVariable ("login") String login) {
-        ProfileDTO profile = service.getByLogin(login);
+    public ResponseEntity<GetProfileDTO> getByLogin(@PathVariable ("login") String login) {
+        GetProfileDTO profile = service.getByLogin(login);
         if (profile != null) {
             return new ResponseEntity<>(profile, HttpStatus.OK);
         }
@@ -51,24 +51,24 @@ public class ProfileController {
     }
 
     @PostMapping
-    public ResponseEntity addProfile(@RequestBody ProfileDTO profileDTO) {
-        if (profileDTO.name.length() > 20) {
+    public ResponseEntity addProfile(@RequestBody GetProfileDTO getProfileDTO) {
+        if (getProfileDTO.name.length() > 20) {
             return new ResponseEntity("To long name", HttpStatus.BAD_REQUEST);
         }
-        if (profileDTO.surname.length() > 20) {
+        if (getProfileDTO.surname.length() > 20) {
             return new ResponseEntity("To long name", HttpStatus.BAD_REQUEST);
         }
 
         Pattern patternEmail = Pattern.compile("^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$");
-        Matcher matcherEmail = patternEmail.matcher(profileDTO.email);
+        Matcher matcherEmail = patternEmail.matcher(getProfileDTO.email);
         if (matcherEmail.matches() == false) {
             return new ResponseEntity("wrong email format", HttpStatus.BAD_REQUEST);
         }
-        if (profileDTO.login.length() > 20) {
+        if (getProfileDTO.login.length() > 20) {
             return new ResponseEntity("To long login", HttpStatus.BAD_REQUEST);
         }
 
-        service.addProfile(profileDTO);
+        service.addProfile(getProfileDTO);
         return new ResponseEntity(HttpStatus.OK);
     }
 
