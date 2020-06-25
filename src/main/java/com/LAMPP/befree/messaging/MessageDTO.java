@@ -5,7 +5,7 @@ import java.util.UUID;
 public class MessageDTO {
 
     public UUID id;
-    public long fromUser;
     public long toUser;
+    public long fromUser;
     public String body;
 }

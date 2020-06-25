@@ -31,7 +31,7 @@ public class MessageService {
 
     public Message sendMessage(MessageDTOWrite messageDTO){
 
-        Message message = new Message(UUID.randomUUID(), messageDTO.fromUser, messageDTO.toUser, messageDTO.body);
+        Message message = new Message(UUID.randomUUID(), messageDTO.toUser, messageDTO.fromUser, messageDTO.body);
         messageRepository.save(message);
         return message;
     }
