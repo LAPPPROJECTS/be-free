@@ -4,11 +4,10 @@ package com.LAMPP.befree.messaging;
 import org.springframework.data.annotation.Id;
 
 import javax.persistence.Entity;
-import java.io.Serializable;
 import java.util.UUID;
 
 @Entity
-public class Message implements Serializable {
+public class Message {
 
     @javax.persistence.Id
     @Id
@@ -18,8 +17,8 @@ public class Message implements Serializable {
     private long fromUser;
     private String body;
 
-    public Message(UUID id, long toUser, long fromUser, String body) {
-        this.id = id;
+    public Message(long toUser, long fromUser, String body) {
+        this.id = UUID.randomUUID();
         this.toUser = toUser;
         this.fromUser = fromUser;
         this.body = body;

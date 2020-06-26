@@ -21,13 +21,13 @@ public class MessageController {
 
 
     @GetMapping
-    public ResponseEntity<List<MessageDTO>> getAllMessages(){
+    public ResponseEntity<List<ShowMessageDTO>> getAllMessages(){
         return new ResponseEntity<>(messageService.getAllMessages(), HttpStatus.OK);
     }
 
 
     @PostMapping
-    public ResponseEntity<MessageDTOWrite> sendMessage(@RequestBody MessageDTOWrite messageDto){
+    public ResponseEntity<SendMessageDTO> sendMessage(@RequestBody SendMessageDTO messageDto){
 
         messageService.sendMessage(messageDto);
         return new ResponseEntity<>(HttpStatus.CREATED);
