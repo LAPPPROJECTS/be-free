@@ -1,9 +1,0 @@
-CREATE TABLE IF NOT EXISTS messages (
-id BINARY(16) PRIMARY KEY,
-to_user int,
-from_user int,
-body varchar(4000)
-);
-
-
-
