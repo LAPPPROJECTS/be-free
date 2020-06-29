@@ -26,9 +26,9 @@ public class Profile implements Serializable {
 
     public Profile(String name, String surname,
                    String email, String login, String password,
-                  long phoneNumber, int age) {
+                   long phoneNumber, int age) {
 
-        this.dateCreateProfile=  new Date();
+        this.dateCreateProfile = new Date();
         this.idProfile = UUID.randomUUID();
         this.name = name;
         this.surname = surname;
@@ -37,22 +37,8 @@ public class Profile implements Serializable {
         this.password = password;
         this.phoneNumber = phoneNumber;
         this.age = age;
-        this.profileType= ProfileType.USER;
+        this.profileType = ProfileType.USER;
     }
 
-    public Profile(String name, String surname,
-                   String email, String login,
-                   long phoneNumber, int age) {
-
-        this.dateCreateProfile=  new Date();
-        this.idProfile = UUID.randomUUID();
-        this.name = name;
-        this.surname = surname;
-        this.email = email;
-        this.login = login;
-       this.phoneNumber = phoneNumber;
-        this.age = age;
-        this.profileType= ProfileType.USER;
-    }
 
 }
