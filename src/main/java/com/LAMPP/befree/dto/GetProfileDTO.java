@@ -2,12 +2,12 @@ package com.LAMPP.befree.dto;
 
 import com.LAMPP.befree.model.ProfileType;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class GetProfileDTO {
 
-    public Date dateCreateProfile;
+    public LocalDateTime dateCreateProfile;
     public UUID idProfile;
     public String name;
     public String surname;

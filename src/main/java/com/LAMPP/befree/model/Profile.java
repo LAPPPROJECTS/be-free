@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import lombok.Getter;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @JsonAutoDetect
@@ -12,7 +12,7 @@ import java.util.UUID;
 
 public class Profile implements Serializable {
 
-    private Date dateCreateProfile;
+    private LocalDateTime dateCreateProfile;
     private UUID idProfile;
     private String name;
     private String surname;
@@ -28,7 +28,7 @@ public class Profile implements Serializable {
                    String email, String login, String password,
                    long phoneNumber, int age) {
 
-        this.dateCreateProfile = new Date();
+        this.dateCreateProfile =  LocalDateTime.now();
         this.idProfile = UUID.randomUUID();
         this.name = name;
         this.surname = surname;
