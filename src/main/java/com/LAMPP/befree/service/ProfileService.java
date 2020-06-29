@@ -1,5 +1,6 @@
 package com.LAMPP.befree.service;
 
+import com.LAMPP.befree.dto.CreateProfileDTO;
 import com.LAMPP.befree.dto.GetProfileDTO;
 import com.LAMPP.befree.mapper.GetProfileToDTOMapper;
 import com.LAMPP.befree.model.Profile;
@@ -36,9 +37,9 @@ public class ProfileService {
         return getProfileToDTOMapper.getProfileDto(profile);
     }
 
-    public void addProfile( GetProfileDTO getProfileDTO){
-        Profile profile= new Profile(getProfileDTO.name, getProfileDTO.surname, getProfileDTO.email, getProfileDTO.login,
-                getProfileDTO.phoneNumber, getProfileDTO.age);
+    public void addProfile(CreateProfileDTO createProfileDTO){
+        Profile profile= new Profile(createProfileDTO.name, createProfileDTO.surname, createProfileDTO.email, createProfileDTO.login, createProfileDTO.password,
+                createProfileDTO.phoneNumber, createProfileDTO.age);
         profileRepository.addProfile(profile);
     }
 

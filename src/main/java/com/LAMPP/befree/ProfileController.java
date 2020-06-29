@@ -1,5 +1,6 @@
 package com.LAMPP.befree;
 
+import com.LAMPP.befree.dto.CreateProfileDTO;
 import com.LAMPP.befree.dto.GetProfileDTO;
 import com.LAMPP.befree.service.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,24 +52,24 @@ public class ProfileController {
     }
 
     @PostMapping
-    public ResponseEntity addProfile(@RequestBody GetProfileDTO getProfileDTO) {
-        if (getProfileDTO.name.length() > 20) {
+    public ResponseEntity addProfile(@RequestBody CreateProfileDTO createProfileDTO) {
+        if (createProfileDTO.name.length() > 20) {
             return new ResponseEntity("To long name", HttpStatus.BAD_REQUEST);
         }
-        if (getProfileDTO.surname.length() > 20) {
+        if (createProfileDTO.surname.length() > 20) {
             return new ResponseEntity("To long name", HttpStatus.BAD_REQUEST);
         }
 
         Pattern patternEmail = Pattern.compile("^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$");
-        Matcher matcherEmail = patternEmail.matcher(getProfileDTO.email);
+        Matcher matcherEmail = patternEmail.matcher(createProfileDTO.email);
         if (matcherEmail.matches() == false) {
             return new ResponseEntity("wrong email format", HttpStatus.BAD_REQUEST);
         }
-        if (getProfileDTO.login.length() > 20) {
+        if (createProfileDTO.login.length() > 20) {
             return new ResponseEntity("To long login", HttpStatus.BAD_REQUEST);
         }
 
-        service.addProfile(getProfileDTO);
+        service.addProfile(createProfileDTO);
         return new ResponseEntity(HttpStatus.OK);
     }
 
