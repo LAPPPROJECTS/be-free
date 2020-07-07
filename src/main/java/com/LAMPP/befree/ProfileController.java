@@ -32,7 +32,7 @@ public class ProfileController {
         return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
     }
 
-
+   /* @GetMapping
     @RequestMapping(value = "/{idProfile}", method = RequestMethod.GET)
     public ResponseEntity<GetProfileDTO> getById(@PathVariable UUID idProfile) {
         GetProfileDTO profile = service.getById(idProfile);
@@ -40,9 +40,26 @@ public class ProfileController {
             return new ResponseEntity<>(profile, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
+    }*/
+   @GetMapping ("/")
+   public ResponseEntity<GetProfileDTO> getById(@RequestHeader UUID idProfile) {
+       GetProfileDTO profile = service.getById(idProfile);
+       if (profile != null) {
+           return new ResponseEntity<>(profile, HttpStatus.OK);
+       }
+       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+   }
 
+    /*@GetMapping
     @RequestMapping(value = "/log/{login}", method = RequestMethod.GET)
+    public ResponseEntity<GetProfileDTO> getByLogin(@PathVariable String login) {
+        GetProfileDTO profile = service.getByLogin(login);
+        if (profile != null) {
+            return new ResponseEntity<>(profile, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }*/
+    @GetMapping ("/{login}")
     public ResponseEntity<GetProfileDTO> getByLogin(@PathVariable String login) {
         GetProfileDTO profile = service.getByLogin(login);
         if (profile != null) {

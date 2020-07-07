@@ -13,7 +13,7 @@ public class GetProfileDTO {
     public String surname;
     public String email;
     public String login;
-    public long phoneNumber;
+    public String phoneNumber;
     public int age;
     public ProfileType profileType;
 

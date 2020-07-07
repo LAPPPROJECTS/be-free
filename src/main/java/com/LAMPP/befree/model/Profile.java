@@ -19,14 +19,14 @@ public class Profile implements Serializable {
     private String email;
     private String login;
     private String password;
-    private long phoneNumber;
+    private String phoneNumber;
     private int age;
     private ProfileType profileType;
 
 
     public Profile(String name, String surname,
                    String email, String login, String password,
-                   long phoneNumber, int age) {
+                   String phoneNumber, int age) {
 
         this.dateCreateProfile =  LocalDateTime.now();
         this.idProfile = UUID.randomUUID();
