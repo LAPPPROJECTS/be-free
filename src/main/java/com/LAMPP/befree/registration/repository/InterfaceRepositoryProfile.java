@@ -1,6 +1,6 @@
-package com.LAMPP.befree.repository;
+package com.LAMPP.befree.registration.repository;
 
-import com.LAMPP.befree.model.Profile;
+import com.LAMPP.befree.registration.model.Profile;
 
 import java.util.List;
 import java.util.UUID;

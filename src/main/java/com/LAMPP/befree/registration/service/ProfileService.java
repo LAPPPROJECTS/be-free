@@ -1,10 +1,10 @@
-package com.LAMPP.befree.service;
+package com.LAMPP.befree.registration.service;
 
-import com.LAMPP.befree.dto.CreateProfileDTO;
-import com.LAMPP.befree.dto.GetProfileDTO;
-import com.LAMPP.befree.mapper.GetProfileToDTOMapper;
-import com.LAMPP.befree.model.Profile;
-import com.LAMPP.befree.repository.ProfileRepository;
+import com.LAMPP.befree.registration.dto.CreateProfileDTO;
+import com.LAMPP.befree.registration.dto.GetProfileDTO;
+import com.LAMPP.befree.registration.mapper.GetProfileToDTOMapper;
+import com.LAMPP.befree.registration.model.Profile;
+import com.LAMPP.befree.registration.repository.ProfileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

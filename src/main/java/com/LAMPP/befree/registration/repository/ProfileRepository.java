@@ -1,6 +1,6 @@
-package com.LAMPP.befree.repository;
+package com.LAMPP.befree.registration.repository;
 
-import com.LAMPP.befree.model.Profile;
+import com.LAMPP.befree.registration.model.Profile;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
