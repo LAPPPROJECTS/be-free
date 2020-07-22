@@ -1,4 +1,4 @@
-package com.LAMPP.befree.model;
+package com.LAMPP.befree.registration.model;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import lombok.Getter;

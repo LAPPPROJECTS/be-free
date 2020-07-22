@@ -1,4 +1,4 @@
-package com.LAMPP.befree.dto;
+package com.LAMPP.befree.registration.dto;
 
 public class CreateProfileDTO {
 

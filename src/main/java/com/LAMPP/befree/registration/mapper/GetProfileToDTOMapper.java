@@ -1,7 +1,7 @@
-package com.LAMPP.befree.mapper;
+package com.LAMPP.befree.registration.mapper;
 
-import com.LAMPP.befree.dto.GetProfileDTO;
-import com.LAMPP.befree.model.Profile;
+import com.LAMPP.befree.registration.dto.GetProfileDTO;
+import com.LAMPP.befree.registration.model.Profile;
 import org.springframework.stereotype.Service;
 
 @Service

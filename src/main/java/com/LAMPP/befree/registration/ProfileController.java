@@ -1,8 +1,8 @@
-package com.LAMPP.befree;
+package com.LAMPP.befree.registration;
 
-import com.LAMPP.befree.dto.CreateProfileDTO;
-import com.LAMPP.befree.dto.GetProfileDTO;
-import com.LAMPP.befree.service.ProfileService;
+import com.LAMPP.befree.registration.dto.CreateProfileDTO;
+import com.LAMPP.befree.registration.dto.GetProfileDTO;
+import com.LAMPP.befree.registration.service.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
