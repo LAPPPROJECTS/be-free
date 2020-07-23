@@ -5,16 +5,18 @@ import org.springframework.stereotype.Service;
 @Service
 public class MessageToDTOMapper {
 
-    public MessageDTO messageDTO(Message message){
+    public ShowMessageDTO showMessageDTO(Message message){
         if(message == null){
             return null;
         } else {
-            MessageDTO messageDTO = new MessageDTO();
-            messageDTO.from = message.getFrom();
-            messageDTO.to = message.getTo();
-            messageDTO.body = message.getBody();
-            return messageDTO;
+            ShowMessageDTO showMessageDTO = new ShowMessageDTO();
+            showMessageDTO.id = message.getId();
+            showMessageDTO.toUser = message.getToUser();
+            showMessageDTO.fromUser = message.getFromUser();
+            showMessageDTO.body = message.getBody();
+            return showMessageDTO;
         }
     }
+
 
 }
