@@ -1,7 +1,9 @@
 package com.LAMPP.befree.messaging;
 
+import java.util.UUID;
+
 public class SendMessageDTO {
-    public long toUser;
-    public long fromUser;
+    public UUID toProfile;
+    public UUID fromProfile;
     public String body;
 }
