@@ -1,6 +1,6 @@
 package repository;
 
-import ad.Ad;
+import model.Ad;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

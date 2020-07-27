@@ -1,4 +1,4 @@
-package ad;
+package model;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 

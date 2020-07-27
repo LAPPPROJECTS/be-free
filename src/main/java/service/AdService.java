@@ -1,7 +1,7 @@
 package service;
 
 import DTO.AdDTO;
-import ad.Ad;
+import model.Ad;
 import mapper.AdToDTOMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

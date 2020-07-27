@@ -1,7 +1,7 @@
 package mapper;
 
 import DTO.AdDTO;
-import ad.Ad;
+import model.Ad;
 import org.springframework.stereotype.Service;
 
 @Service
