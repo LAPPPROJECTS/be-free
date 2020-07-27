@@ -1,42 +1,57 @@
 package model;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import java.time.LocalDateTime;
+import java.util.UUID;
 
-import java.io.Serializable;
-
-@JsonAutoDetect
-public class Ad implements Serializable {
+public class Ad {
 
     private String title;
-    private int id;
+    private UUID id;
+    private String text;
+    private UUID userId;
+    private LocalDateTime createdOn;
+    private AdLifeCycle adLifeCycle;
 
+    public String getTitle() {
+        return title;
+    }
 
-    public Ad(String title, int id) {
+    public UUID getId() {
+        return id;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public UUID getUserId() {
+        return userId;
+    }
+
+    public LocalDateTime getCreatedOn() {
+        return createdOn;
+    }
+
+    public AdLifeCycle getAdLifeCycle() {
+        return adLifeCycle;
+    }
+
+    public Ad(String title, String text, UUID userId) {
         this.title = title;
-        this.id = id;
+        this.text = text;
+        this.userId = userId;
+
+        this.id = UUID.randomUUID();
+        this.createdOn = LocalDateTime.now();
+        this.adLifeCycle = AdLifeCycle.WaitingForPayment;
     }
 
     public Ad() {
 
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
 
-    public void get() {
-    }
+
+
 }
