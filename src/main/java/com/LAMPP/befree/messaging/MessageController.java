@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 
@@ -27,7 +28,7 @@ public class MessageController {
 
 
     @PostMapping
-    public ResponseEntity<SendMessageDTO> sendMessage(@RequestBody SendMessageDTO messageDto){
+    public ResponseEntity<SendMessageDTO> sendMessage(@Valid @RequestBody SendMessageDTO messageDto){
 
         messageService.sendMessage(messageDto);
         return new ResponseEntity<>(HttpStatus.CREATED);

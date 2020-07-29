@@ -12,15 +12,14 @@ public class Message {
     @javax.persistence.Id
     @Id
     private UUID id;
-
-    private long toUser;
-    private long fromUser;
+    private UUID toProfile;
+    private UUID fromProfile;
     private String body;
 
-    public Message(long toUser, long fromUser, String body) {
+    public Message(UUID toProfile, UUID fromProfile, String body) {
         this.id = UUID.randomUUID();
-        this.toUser = toUser;
-        this.fromUser = fromUser;
+        this.toProfile = toProfile;
+        this.fromProfile = fromProfile;
         this.body = body;
     }
 
@@ -31,12 +30,12 @@ public class Message {
         return id;
     }
 
-    public long getToUser() {
-        return toUser;
+    public UUID getToProfile() {
+        return toProfile;
     }
 
-    public long getFromUser() {
-        return fromUser;
+    public UUID getFromProfile() {
+        return fromProfile;
     }
 
     public String getBody() {

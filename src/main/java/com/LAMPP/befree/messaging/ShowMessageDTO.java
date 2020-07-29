@@ -5,7 +5,7 @@ import java.util.UUID;
 public class ShowMessageDTO {
 
     public UUID id;
-    public long toUser;
-    public long fromUser;
+    public UUID toProfile;
+    public UUID fromProfile;
     public String body;
 }

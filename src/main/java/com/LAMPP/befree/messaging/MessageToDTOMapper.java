@@ -11,8 +11,8 @@ public class MessageToDTOMapper {
         } else {
             ShowMessageDTO showMessageDTO = new ShowMessageDTO();
             showMessageDTO.id = message.getId();
-            showMessageDTO.toUser = message.getToUser();
-            showMessageDTO.fromUser = message.getFromUser();
+            showMessageDTO.toProfile = message.getToProfile();
+            showMessageDTO.fromProfile = message.getFromProfile();
             showMessageDTO.body = message.getBody();
             return showMessageDTO;
         }
