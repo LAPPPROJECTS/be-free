@@ -5,8 +5,8 @@ import java.util.UUID;
 
 public class Ad {
 
-    private String title;
     private UUID id;
+    private String title;
     private String text;
     private UUID userId;
     private LocalDateTime createdOn;
