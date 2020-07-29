@@ -35,7 +35,7 @@ public class ProfileController {
    /* @GetMapping
     @RequestMapping(value = "/{idProfile}", method = RequestMethod.GET)
     public ResponseEntity<GetProfileDTO> getById(@PathVariable UUID idProfile) {
-        GetProfileDTO profile = service.getById(idProfile);
+        GetProfileDTO profile = com.LAMPP.befree.service.getById(idProfile);
         if (profile != null) {
             return new ResponseEntity<>(profile, HttpStatus.OK);
         }
@@ -53,7 +53,7 @@ public class ProfileController {
     /*@GetMapping
     @RequestMapping(value = "/log/{login}", method = RequestMethod.GET)
     public ResponseEntity<GetProfileDTO> getByLogin(@PathVariable String login) {
-        GetProfileDTO profile = service.getByLogin(login);
+        GetProfileDTO profile = com.LAMPP.befree.service.getByLogin(login);
         if (profile != null) {
             return new ResponseEntity<>(profile, HttpStatus.OK);
         }

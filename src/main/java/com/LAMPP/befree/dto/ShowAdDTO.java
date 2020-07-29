@@ -1,6 +1,6 @@
 package DTO;
 
-import model.AdLifeCycle;
+import com.LAMPP.befree.model.AdLifeCycle;
 
 import java.time.LocalDateTime;
 import java.util.UUID;

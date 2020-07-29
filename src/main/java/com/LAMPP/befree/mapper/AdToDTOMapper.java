@@ -1,7 +1,7 @@
-package mapper;
+package com.LAMPP.befree.mapper;
 
 import DTO.ShowAdDTO;
-import model.Ad;
+import com.LAMPP.befree.model.Ad;
 import org.springframework.stereotype.Service;
 
 @Service

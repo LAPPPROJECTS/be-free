@@ -1,4 +1,4 @@
-package model;
+package com.LAMPP.befree.model;
 
 import java.time.LocalDateTime;
 import java.util.UUID;

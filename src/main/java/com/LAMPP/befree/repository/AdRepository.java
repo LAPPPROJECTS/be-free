@@ -1,10 +1,9 @@
-package repository;
+package com.LAMPP.befree.repository;
 
-import model.Ad;
+import com.LAMPP.befree.model.Ad;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 

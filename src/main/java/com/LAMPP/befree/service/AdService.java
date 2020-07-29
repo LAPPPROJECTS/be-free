@@ -1,11 +1,11 @@
-package service;
+package com.LAMPP.befree.service;
 
 import DTO.ShowAdDTO;
-import model.Ad;
-import mapper.AdToDTOMapper;
+import com.LAMPP.befree.model.Ad;
+import com.LAMPP.befree.mapper.AdToDTOMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.AdRepository;
+import com.LAMPP.befree.repository.AdRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
