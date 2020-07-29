@@ -28,7 +28,7 @@ public class AdService {
     }
 
     public void addAd(ShowAdDTO showAdDTO) {
-        Ad ad = new Ad(showAdDTO.title, showAdDTO.id);
+        Ad ad = new Ad(showAdDTO.title, showAdDTO.text, showAdDTO.userId);
         adRepository.addAd(ad);
     }
 }

@@ -12,7 +12,11 @@ public class AdToDTOMapper {
         } else {
             ShowAdDTO showAdDTO = new ShowAdDTO();
             showAdDTO.id = ad.getId();
-            showAdDTO.title = String.format("Tytul ogloszenia: %s", ad.getTitle());
+            showAdDTO.title = ad.getTitle();
+            showAdDTO.text = ad.getText();
+            showAdDTO.userId = ad.getUserId();
+            showAdDTO.createdOn = ad.getCreatedOn();
+            showAdDTO.adLifeCycle = ad.getAdLifeCycle();
             return showAdDTO;
         }
     }
