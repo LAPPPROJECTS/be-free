@@ -34,24 +34,14 @@ public class ProfileController {
     }
 
 
-   @GetMapping("/{idProfile}")
-   public ResponseEntity<GetProfileDTO> getById(@PathVariable UUID idProfile) {
-      Optional <GetProfileDTO> profile = service.getById(idProfile);
-       if (profile.isPresent()) {
-           return new ResponseEntity<>(profile.get(), HttpStatus.OK);
-       }
-       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-   }
-
-
-    /*@GetMapping ("/{login}")
-    public ResponseEntity<GetProfileDTO> getByLogin(@PathVariable String login) {
-        GetProfileDTO profile = service.getByLogin(login);
-        if (profile != null) {
-            return new ResponseEntity<>(profile, HttpStatus.OK);
+    @GetMapping("/{idProfile}")
+    public ResponseEntity<GetProfileDTO> getById(@PathVariable UUID idProfile) {
+        Optional<GetProfileDTO> profile = service.getById(idProfile);
+        if (profile.isPresent()) {
+            return new ResponseEntity<>(profile.get(), HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }*/
+    }
 
     @PostMapping
     public ResponseEntity addProfile(@RequestBody CreateProfileDTO createProfileDTO) {

@@ -21,26 +21,24 @@ public class ProfileService {
     GetProfileToDTOMapper getProfileToDTOMapper;
 
     @Autowired
-    public ProfileService(InterfaceRepositoryProfile profileRepository, GetProfileToDTOMapper getProfileToDTOMapper){
-        this.profileRepository= profileRepository;
+    public ProfileService(InterfaceRepositoryProfile profileRepository, GetProfileToDTOMapper getProfileToDTOMapper) {
+        this.profileRepository = profileRepository;
         this.getProfileToDTOMapper = getProfileToDTOMapper;
     }
-    public List<GetProfileDTO>getAll(){
+
+    public List<GetProfileDTO> getAll() {
         List<Profile> profiles = profileRepository.findAll();
         return profiles.stream().map(profile -> getProfileToDTOMapper.getProfileDto(Optional.of(profile)).get()).collect(Collectors.toList());
     }
 
-    public Optional <GetProfileDTO> getById(UUID idProfile){
-        Optional <Profile> profile = profileRepository.findById(idProfile);
+    public Optional<GetProfileDTO> getById(UUID idProfile) {
+        Optional<Profile> profile = profileRepository.findById(idProfile);
         return getProfileToDTOMapper.getProfileDto(profile);
     }
-    /*public GetProfileDTO getByLogin(String login){
-        Profile profile= profileRepository.getByLogin(login);
-        return getProfileToDTOMapper.getProfileDto(profile);
-    }*/
 
-    public void addProfile(CreateProfileDTO createProfileDTO){
-        Profile profile= new Profile(createProfileDTO.name, createProfileDTO.surname, createProfileDTO.email, createProfileDTO.login, createProfileDTO.password,
+
+    public void addProfile(CreateProfileDTO createProfileDTO) {
+        Profile profile = new Profile(createProfileDTO.name, createProfileDTO.surname, createProfileDTO.email, createProfileDTO.login, createProfileDTO.password,
                 createProfileDTO.phoneNumber, createProfileDTO.age);
         profileRepository.save(profile);
     }

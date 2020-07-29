@@ -11,14 +11,7 @@ import java.util.UUID;
 @Repository
 public interface InterfaceRepositoryProfile extends JpaRepository<Profile, UUID> {
 
-
-
-
-
-   
-
     public Profile getByLogin(String login);
-
 
 
 }
