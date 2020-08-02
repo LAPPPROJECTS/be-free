@@ -1,6 +1,6 @@
-package com.LAMPP.befree.dto;
+package com.LAMPP.befree.registration.dto;
 
-import com.LAMPP.befree.model.ProfileType;
+import com.LAMPP.befree.registration.model.ProfileType;
 
 import java.time.LocalDateTime;
 import java.util.UUID;

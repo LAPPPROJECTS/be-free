@@ -1,19 +1,27 @@
-package com.LAMPP.befree.model;
+package com.LAMPP.befree.registration.model;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import lombok.Getter;
+import org.hibernate.annotations.Type;
+import org.springframework.data.annotation.Id;
 
+import javax.persistence.Entity;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 @JsonAutoDetect
 @Getter
+@Entity
 
 public class Profile implements Serializable {
 
-    private LocalDateTime dateCreateProfile;
+    @javax.persistence.Id
+    @Id
+    @org.hibernate.annotations.Type(type="org.hibernate.type.UUIDCharType")
     private UUID idProfile;
+
+    private LocalDateTime dateCreateProfile;
     private String name;
     private String surname;
     private String email;
@@ -40,5 +48,6 @@ public class Profile implements Serializable {
         this.profileType = ProfileType.USER;
     }
 
-
+    public Profile() {
+    }
 }

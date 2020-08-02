@@ -1,14 +1,15 @@
-package com.LAMPP.befree;
+package com.LAMPP.befree.registration;
 
-import com.LAMPP.befree.dto.CreateProfileDTO;
-import com.LAMPP.befree.dto.GetProfileDTO;
-import com.LAMPP.befree.service.ProfileService;
+import com.LAMPP.befree.registration.dto.CreateProfileDTO;
+import com.LAMPP.befree.registration.dto.GetProfileDTO;
+import com.LAMPP.befree.registration.service.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -32,38 +33,12 @@ public class ProfileController {
         return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
     }
 
-   /* @GetMapping
-    @RequestMapping(value = "/{idProfile}", method = RequestMethod.GET)
-    public ResponseEntity<GetProfileDTO> getById(@PathVariable UUID idProfile) {
-        GetProfileDTO profile = service.getById(idProfile);
-        if (profile != null) {
-            return new ResponseEntity<>(profile, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }*/
-   @GetMapping ("/")
-   public ResponseEntity<GetProfileDTO> getById(@RequestHeader UUID idProfile) {
-       GetProfileDTO profile = service.getById(idProfile);
-       if (profile != null) {
-           return new ResponseEntity<>(profile, HttpStatus.OK);
-       }
-       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-   }
 
-    /*@GetMapping
-    @RequestMapping(value = "/log/{login}", method = RequestMethod.GET)
-    public ResponseEntity<GetProfileDTO> getByLogin(@PathVariable String login) {
-        GetProfileDTO profile = service.getByLogin(login);
-        if (profile != null) {
-            return new ResponseEntity<>(profile, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }*/
-    @GetMapping ("/{login}")
-    public ResponseEntity<GetProfileDTO> getByLogin(@PathVariable String login) {
-        GetProfileDTO profile = service.getByLogin(login);
-        if (profile != null) {
-            return new ResponseEntity<>(profile, HttpStatus.OK);
+    @GetMapping("/{idProfile}")
+    public ResponseEntity<GetProfileDTO> getById(@PathVariable UUID idProfile) {
+        Optional<GetProfileDTO> profile = service.getById(idProfile);
+        if (profile.isPresent()) {
+            return new ResponseEntity<>(profile.get(), HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
