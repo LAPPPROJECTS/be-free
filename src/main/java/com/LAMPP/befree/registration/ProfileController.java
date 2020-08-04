@@ -8,11 +8,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 @RestController
 @RequestMapping("/profile")
@@ -37,32 +36,14 @@ public class ProfileController {
     @GetMapping("/{idProfile}")
     public ResponseEntity<GetProfileDTO> getById(@PathVariable UUID idProfile) {
         Optional<GetProfileDTO> profile = service.getById(idProfile);
-        if (profile.isPresent()) {
-            return new ResponseEntity<>(profile.get(), HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return profile.map(getProfileDTO -> new ResponseEntity<>(getProfileDTO, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @PostMapping
-    public ResponseEntity addProfile(@RequestBody CreateProfileDTO createProfileDTO) {
-        if (createProfileDTO.name.length() > 20) {
-            return new ResponseEntity("To long name", HttpStatus.BAD_REQUEST);
-        }
-        if (createProfileDTO.surname.length() > 20) {
-            return new ResponseEntity("To long name", HttpStatus.BAD_REQUEST);
-        }
-
-        Pattern patternEmail = Pattern.compile("^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$");
-        Matcher matcherEmail = patternEmail.matcher(createProfileDTO.email);
-        if (matcherEmail.matches() == false) {
-            return new ResponseEntity("wrong email format", HttpStatus.BAD_REQUEST);
-        }
-        if (createProfileDTO.login.length() > 20) {
-            return new ResponseEntity("To long login", HttpStatus.BAD_REQUEST);
-        }
+    public ResponseEntity<CreateProfileDTO> addProfile(@Valid @RequestBody CreateProfileDTO createProfileDTO) {
 
         service.addProfile(createProfileDTO);
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
 }
