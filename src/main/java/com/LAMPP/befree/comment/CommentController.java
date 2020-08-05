@@ -28,7 +28,7 @@ private CommentService commentService;
 }
 
 @PostMapping
-    public ResponseEntity<SendCommentDTO> sendComment (@RequestBody SendCommentDTO commentDTO){
+    public ResponseEntity<SendCommentDTO> sendComment (@Valid @RequestBody SendCommentDTO commentDTO){
 
     commentService.sendComment(commentDTO);
     return new ResponseEntity<>(HttpStatus.CREATED);
