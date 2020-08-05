@@ -31,7 +31,7 @@ public CommentService ( InterfaceCommentRepository commentRepository, CommentToD
 
     public  Comment sendComment ( SendCommentDTO sendCommentDTO ){
 
-        Comment comment = new Comment(sendCommentDTO.toUser, sendCommentDTO.fromUser, sendCommentDTO.body, sendCommentDTO.rating);
+        Comment comment = new Comment(sendCommentDTO.toProfile, sendCommentDTO.fromProfile, sendCommentDTO.body, sendCommentDTO.rating);
         commentRepository.save(comment);
         return comment;
     }
