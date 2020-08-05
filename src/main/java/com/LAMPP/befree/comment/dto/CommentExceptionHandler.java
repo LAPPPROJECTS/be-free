@@ -16,18 +16,26 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-@RestControllerAdvice
+@ControllerAdvice
 public class CommentExceptionHandler extends ResponseEntityExceptionHandler {
 
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
                                                                   HttpHeaders headers, HttpStatus status,
                                                                   WebRequest request) {
-        String message = ex.getBindingResult()
+        Map<String, Object> errorBody = new HashMap<>();
+
+        errorBody.put("timestamp", LocalDateTime.now());
+        errorBody.put("status", status.value());
+
+        List<String> errors = ex.getBindingResult()
                 .getFieldErrors()
                 .stream()
-                .map(fe -> fe.getDefaultMessage())
-                .collect(Collectors.joining(";"));
-        return new ResponseEntity( new ErrorDTO(message), HttpStatus.BAD_REQUEST);
+                .map(DefaultMessageSourceResolvable::getDefaultMessage)
+                .collect(Collectors.toList());
+
+        errorBody.put("errors", errors);
+
+        return new ResponseEntity<>(errorBody, headers, status);
     }
 }

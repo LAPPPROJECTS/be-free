@@ -25,13 +25,13 @@ public class Comment {
 
         this.idComment = UUID.randomUUID();
         this.toProfile = toProfile;
-        this.toProfile = fromProfile;
+        this.fromProfile = fromProfile;
         this.commentBody = commentBody;
         this.rating = rating;
 
     }
 
-    public Comment(){
+    public Comment() {
 
     }
 
