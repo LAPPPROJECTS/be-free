@@ -31,7 +31,8 @@ public class CreateProfileDTO {
     public String password;
 
     @NotBlank(message = "Phone number is required")
-    @Size(min = 11, max = 11, message = "Phone number not valid")
+    @Pattern(regexp = "((\\+44(\\s\\(0\\)\\s|\\s0\\s|\\s)?)|0)[1-9]\\d{3}(\\s)?\\d{6}",
+            message = "Phone number not recognized")
     public String phoneNumber;
 
     public int age;
